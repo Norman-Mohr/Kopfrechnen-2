@@ -144,6 +144,7 @@ public class OutputPanel extends JPanel implements ActionListener { // Game Pane
 		txfeingabe = new JTextField();
 		txfeingabe.setBounds(90, 210, 120, 40);
 		txfeingabe.setVisible(false);
+	 
 		txfeingabe.setHorizontalAlignment(SwingConstants.CENTER);
 		txfeingabe.addActionListener(this);
 		this.add(txfeingabe);
