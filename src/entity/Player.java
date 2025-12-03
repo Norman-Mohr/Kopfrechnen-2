@@ -36,7 +36,9 @@ public class Player {
 
 	public void getImage() {
 		try {
-			 
+			image1 = ImageIO.read(getClass().getResourceAsStream("/picture/CharcRechts.1.png"));
+			image2 = ImageIO.read(getClass().getResourceAsStream("/picture/CharcRechts.2.png"));
+			image3 = ImageIO.read(getClass().getResourceAsStream("/picture/CharcRechts.3.png"));
 
 		} catch (IOException e) {
 
