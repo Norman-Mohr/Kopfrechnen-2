@@ -52,6 +52,7 @@ public class Player {
 			x += 1;  spriteCounter();    
 		if(x > stepX) {  step = false;  stepX+=150;  }  
 		}
+		if(op.levelUp) {  x += 1;  spriteCounter();   }
 		
 		if (collisionZiel) {
 			op.punkte = op.punkte + op.punkteExtra;

@@ -34,8 +34,10 @@ public class Level {
 				 
 				e.printStackTrace();
 			}
-            op.txfeingabe.setEnabled(true);
-			
+            
+			op.txfeingabe.setEditable(true);
+			op.txfeingabe.requestFocus();
+            
 			if(op.addition != null) {
 				op.addition.updateLevel(30);
 			}
@@ -59,7 +61,7 @@ public class Level {
 			d2g.setColor(Color.magenta);
 			d2g.drawString("Level "+op.level, 110,210);
 			
-			op.txfeingabe.setEnabled(false);
+			op.txfeingabe.setEditable(false);
 			
 			try {
 				Thread.sleep(2000);
@@ -68,7 +70,7 @@ public class Level {
 				e.printStackTrace();
 			}
 			
-			op.txfeingabe.setEnabled(true);
+			op.txfeingabe.setEditable(true);
 			
             op.player.step = false;           
             op.player.stepX = 150;
