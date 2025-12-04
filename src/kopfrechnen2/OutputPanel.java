@@ -261,13 +261,18 @@ public class OutputPanel extends JPanel implements ActionListener { // Game Pane
 			}
 		}
 
-		update();
+		try {
+			update();
+		} catch (InterruptedException e1) {
+			 
+			e1.printStackTrace();
+		}
 
 		repaint();
 
 	}
 
-	void update() {
+	void update() throws InterruptedException {
 		
 		 
 

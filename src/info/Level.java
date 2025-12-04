@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
+import javax.swing.Timer;
+
 import kopfrechnen2.OutputPanel;
 
 public class Level {
@@ -30,17 +32,19 @@ public class Level {
 			 
 			try {
 				Thread.sleep(2000);
-			 
 			} catch (InterruptedException e) {
-				 
+			 
 				e.printStackTrace();
 			}
-			 
-			op.txfeingabe.setVisible(true);
-		    op.txfeingabe.setEditable(true);
-		    op.txfeingabe.requestFocus();
-			 
-			  
+			
+			new Timer(20, evt -> {
+                op.txfeingabe.setEditable(true);  
+                op.txfeingabe.setVisible(true);
+                op.txfeingabe.requestFocus();
+                ((Timer) evt.getSource()).stop();
+            }).start();
+         
+		  
 			if(op.addition != null) {
 				op.addition.updateLevel(30);
 			}
@@ -131,6 +135,13 @@ public class Level {
 		 
 			e.printStackTrace();
 		}
+	    
+	    new Timer(20, evt -> {
+            op.txfeingabe.setEditable(true);  
+            op.txfeingabe.setVisible(true);
+            op.txfeingabe.requestFocus();
+            ((Timer) evt.getSource()).stop();
+        }).start();
 	    
 		op.txfeingabe.setEditable(true);
 		 
