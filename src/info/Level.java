@@ -1,9 +1,11 @@
 package info;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import kopfrechnen2.OutputPanel;
@@ -11,6 +13,7 @@ import kopfrechnen2.OutputPanel;
 public class Level {
 
 	OutputPanel op;
+	Component[] cont = new OutputPanel[4];
 	Graphics2D d2g;
 	boolean time = false;
 	public Level(OutputPanel op) {
@@ -24,26 +27,39 @@ public class Level {
 		switch (op.level) {
 		
 		case 1: 
-			
+
 			d2g = (Graphics2D) op.getGraphics();
 			d2g.setFont(new Font("Arial",3,140));
 			d2g.setColor(Color.magenta);
 			d2g.drawString("Level "+op.level, 110,210);
-			 
+			
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
-			 
+				 
 				e.printStackTrace();
 			}
+		 
+			Runnable myRunnable = new Runnable() {
+
+				@Override
+				public void run() {
+					 
+					 try {
+						Thread.sleep(400);
+					 } catch (InterruptedException e) {
+						 
+						e.printStackTrace();
+					 }
+					    op.txfeingabe.setEditable(true);  
+		                op.txfeingabe.setVisible(true);
+		                op.txfeingabe.requestFocus();
+				}
+				
+			};
 			
-			new Timer(20, evt -> {
-                op.txfeingabe.setEditable(true);  
-                op.txfeingabe.setVisible(true);
-                op.txfeingabe.requestFocus();
-                ((Timer) evt.getSource()).stop();
-            }).start();
-         
+			Thread thread = new Thread(myRunnable);
+			thread.start();
 		  
 			if(op.addition != null) {
 				op.addition.updateLevel(30);
@@ -121,24 +137,40 @@ public class Level {
 	}
 	
 	void newLevel() {
-		
+		 
 		d2g = (Graphics2D) op.getGraphics();
 		d2g.setFont(new Font("Arial",3,140));
 		d2g.setColor(Color.magenta);
 		d2g.drawString("Level "+op.level, 110,210);
+		 
 		
-		op.txfeingabe.setEditable(false);
-		op.txfeingabe.setVisible(false);
+	  	Runnable myRunnable = new Runnable() {
+
+			@Override
+			public void run() {
+				SwingUtilities.invokeLater(() -> {
+				    op.txfeingabe.setText("");
+					op.txfeingabe.setEditable(false);
+					op.txfeingabe.setVisible(false);
+				  
+			});
+			}
+			
+		};   
+		 
 		
+	 	Thread thread = new Thread(myRunnable);
+		thread.start();
+	     
+		 
 	    try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 		 
 			e.printStackTrace();
 		}
-	 
 	    
-	    new Timer(2000, evt -> {
+	   new Timer(400, evt -> {
             op.txfeingabe.setEditable(true);  
             op.txfeingabe.setVisible(true);
             op.txfeingabe.requestFocus();

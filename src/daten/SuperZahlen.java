@@ -6,7 +6,7 @@ import kopfrechnen2.OutputPanel;
 
 public class SuperZahlen {
  
-	
+	public int[] zahlenGesammt = new int[400];
 	public int[] zahlen = new int[30];
 	
 	public int[] zahl1 = new int[30];
@@ -37,6 +37,32 @@ public class SuperZahlen {
 		 this.op = op;
 	}
  
+	
+	public int[] zahlenGesammt() {
+		
+		for(int a=0; a<400; a++) {
+			zahlenGesammt[a]=a;
+		}
+		return zahlenGesammt;
+	}
+	
+	public int[] zufallVonBis(int von, int bis) {
+ 
+		int length = bis-von;
+		zahlen = new int[length];
+		
+		for (int z = 0; z < length; z++) {
+			zahlen[z] = rand.nextInt(bis) + von;
+			for (int t = 0; t < z; t++) {
+				if (zahlen[t] == zahlen[z]) {
+					z--;
+				}
+
+			}
+		}
+		return zahlen;
+	}
+	
 
 	public int[] zufallszahlen(int length) {
 

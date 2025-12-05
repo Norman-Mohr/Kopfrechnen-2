@@ -140,18 +140,19 @@ public class OutputPanel extends JPanel implements ActionListener { // Game Pane
 		btnStart.setForeground(Color.white);
 		btnStart.addActionListener(this);
 		this.add(btnStart);
-
-		txfeingabe = new JTextField();
-		txfeingabe.setBounds(90, 210, 120, 40);
-		txfeingabe.setVisible(false);
-		txfeingabe.setEditable(false);
-		txfeingabe.setHorizontalAlignment(SwingConstants.CENTER);
-		txfeingabe.addActionListener(this);
-		this.add(txfeingabe);
-
-		keyH = new KeyHandler();
-		txfeingabe.addKeyListener(keyH);
-
+ 
+			
+			txfeingabe = new JTextField();
+			txfeingabe.setBounds(90, 210, 120, 40);
+			txfeingabe.setVisible(false);
+			txfeingabe.setEditable(false);
+			txfeingabe.setHorizontalAlignment(SwingConstants.CENTER);
+			txfeingabe.addActionListener(this);
+			this.add(txfeingabe);
+			
+			keyH = new KeyHandler();
+			txfeingabe.addKeyListener(keyH);
+	 
 		stopuhr1 = new StopUhr(this);
 
 		timer = new Timer(10, this);
